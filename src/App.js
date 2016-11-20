@@ -12,19 +12,17 @@ class Filter extends Component {
 
     var filterValues = filter.map(function(obj, index) {
         return (
-          <li key={index} className="Filter-value">
+          <div className="filter-value" key={obj.value}>
             <label htmlFor={index}>{obj.occurrence}</label>
             <input type="checkbox" id={index} value={obj.value} />
             <label htmlFor={index}>{obj.value}</label>
-          </li>
+          </div>
         )
     })
 
     return (
-      <div className="Filter">
-        <ul>
-          {filterValues}
-        </ul>
+      <div className="filter">
+        {filterValues}
       </div>
     )
   }
@@ -37,11 +35,11 @@ class FiltersContainer extends Component {
     var filtersDict = this.props.filtersDict
 
     var filters = Object.keys(filtersDict).map(function(key, index) {
-      return <Filter key={index} filter={filtersDict[key]} />
+      return <Filter key={key} filter={filtersDict[key]} />
     })
 
     return (
-      <div className="FiltersContainer">
+      <div className="filters-container">
         {filters}
       </div>
     )
@@ -53,7 +51,7 @@ class Element extends Component {
 
   render() {
     return (
-      <div className="Element">
+      <div className="element">
         <h3>{this.props.element.title}</h3>
         <h5>address: {this.props.element.address}</h5>
         <p>activity: {this.props.element.activity || "none provided"}</p>
@@ -64,7 +62,7 @@ class Element extends Component {
 
 }
 
-class ElementContainer extends Component {
+class ElementsContainer extends Component {
 
   render() {
     var elements = this.props.elements.map(function(element, index) {
@@ -72,7 +70,7 @@ class ElementContainer extends Component {
     })
 
     return (
-      <div className="ElementContainer">
+      <div className="elements-container">
         {elements}
       </div>
     )
@@ -113,7 +111,7 @@ class App extends Component {
     super(props)
     this.state = {
       elements: wwoof_list,
-      filterKeys: [ "region", "wwoof_since", "tags" ]
+      filterKeys: [ "region", "wwoof_since", "tags", "quick_reply" ]
     }
   }
 
@@ -129,15 +127,15 @@ class App extends Component {
     // console.log(filtersDict)
 
     return (
-      <div className="App">
-        <div className="App-header">
+      <div className="app">
+        <div className="app-header">
           <h3>WWOOF LIST - CHILE</h3>
         </div>
-        <div className="App-content">
+        <div className="app-content">
           <FiltersContainer filtersDict={filtersDict} />
-          <ElementContainer elements={elements} />
+          <ElementsContainer elements={elements} />
         </div>
-        <div className="App-footer">
+        <div className="app-footer">
           <span>akabab © 2016</span>
         </div>
       </div>

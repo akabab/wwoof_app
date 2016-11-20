@@ -1,59 +1,80 @@
 html,
 body,
 #root,
-.App {
+.app {
   height: 100%;
   min-height: 100%;
   overflow: hidden;
 }
 
-.App {
+.app {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 }
 
-.App-header, .App-footer {
+.app-header, .app-footer {
   flex: 0 0 auto;
   background-color: #272822;
   color: white;
   text-align: center;
 }
 
-.App-content {
+.app-content {
   flex: 1 1 auto;
   overflow-y: scroll;
 }
 
-.App-header {
+.app-header {
 }
 
-.App-footer {
+.app-footer {
   padding: 10px;
   font-size: 13px;
 }
 
 
-
-.Filters {
+.filters-container {
   background-color: #333;
   color: white;
   padding: 10px;
+  height: 200px;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.ElementContainer {
+.filter {
+  flex: 1 1 400px;
+  background-color: #555;
+  margin: 4px;
+  overflow-y: scroll;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.elements-container {
   margin-left: 150px;
   margin-right: 150px;
+}
+
+.element {
+  background-color: #DDD;
+  margin: 10px;
+  padding: 10px;
 }
 
 
 // Olds
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.app-logo {
+  animation: app-logo-spin infinite 20s linear;
   height: 80px;
 }
 
-@keyframes App-logo-spin {
+@keyframes app-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
