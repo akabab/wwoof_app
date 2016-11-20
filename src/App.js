@@ -4,26 +4,34 @@ import _ from 'lodash'
 
 import wwoof_list from './wwoof_list.json'
 
+import ScrollLock from 'react-scroll-lock-component'
+
 class Filter extends Component {
 
- render() {
+  mixins: [
+    ScrollLock
+  ]
+
+  render() {
 
     var filter = this.props.filter.sort(byOccurrence)
 
     var filterValues = filter.map(function(obj, index) {
         return (
           <div className="filter-value" key={obj.value}>
-            <label htmlFor={index}>{obj.occurrence}</label>
-            <input type="checkbox" id={index} value={obj.value} />
-            <label htmlFor={index}>{obj.value}</label>
+            <input className="filter-value-checkbox" type="checkbox" id={index} value={obj.value} />
+            <div className="filter-value-occurrence" htmlFor={index}>{obj.occurrence}</div>
+            <div className="filter-value-label" htmlFor={index}>{obj.value}</div>
           </div>
         )
     })
 
     return (
-      <div className="filter">
-        {filterValues}
-      </div>
+      <ScrollLock>
+        <div className="filter">
+          {filterValues}
+        </div>
+      </ScrollLock>
     )
   }
 
@@ -35,7 +43,11 @@ class FiltersContainer extends Component {
     var filtersDict = this.props.filtersDict
 
     var filters = Object.keys(filtersDict).map(function(key, index) {
-      return <Filter key={key} filter={filtersDict[key]} />
+      return (
+        <div key={key} className="filter-wrapper">
+          <Filter filter={filtersDict[key]} />
+        </div>
+      )
     })
 
     return (
