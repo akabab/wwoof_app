@@ -1,16 +1,52 @@
 import React, { Component } from 'react'
 import './App.css'
+import _ from 'lodash'
 
 import wwoof_list from './wwoof_list.json'
 
-class Filters extends Component {
-  render() {
+class Filter extends Component {
+
+ render() {
+
+    var filter = this.props.filter.sort(byOccurrence)
+
+    var filterValues = filter.map(function(obj, index) {
+        return (
+          <li key={index} className="Filter-value">
+            <label htmlFor={index}>{obj.occurrence}</label>
+            <input type="checkbox" id={index} value={obj.value} />
+            <label htmlFor={index}>{obj.value}</label>
+          </li>
+        )
+    })
+
     return (
-      <div className="Filters">
-        <div>Filters</div>
+      <div className="Filter">
+        <ul>
+          {filterValues}
+        </ul>
       </div>
     )
   }
+
+}
+
+class FiltersContainer extends Component {
+
+  render() {
+    var filtersDict = this.props.filtersDict
+
+    var filters = Object.keys(filtersDict).map(function(key, index) {
+      return <Filter key={index} filter={filtersDict[key]} />
+    })
+
+    return (
+      <div className="FiltersContainer">
+        {filters}
+      </div>
+    )
+  }
+
 }
 
 class Element extends Component {
@@ -30,17 +66,11 @@ class Element extends Component {
 
 class ElementContainer extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      elements: wwoof_list
-    }
-  }
-
   render() {
-    var elements = this.state.elements.map(function(element, index) {
+    var elements = this.props.elements.map(function(element, index) {
         return <Element key={index} element={element} />
     })
+
     return (
       <div className="ElementContainer">
         {elements}
@@ -50,20 +80,65 @@ class ElementContainer extends Component {
 
 }
 
+// - Helpers
+
+var uniquesWithOccurrenceAsDictionnary = function (array) {
+  return _.flatten(array).reduce(function (obj, key) {
+    obj[key] = (obj[key] || 0) + 1
+    return obj
+  }, {})
+}
+
+var uniquesWithOccurrenceAsArray = function (array) {
+  var dict = uniquesWithOccurrenceAsDictionnary(array)
+
+  return Object.keys(dict).reduce(function (arr, key) {
+    arr.push({
+      "value": key,
+      "occurrence": dict[key],
+    })
+    return arr
+  }, [])
+}
+
+var parseFilter = (array, key) => _.uniq(_.flatten(array.map(elem => elem[key])))
+
+var byOccurrence = (a, b) => b.occurrence - a.occurrence
+
+
+
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      elements: wwoof_list,
+      filterKeys: [ "region", "wwoof_since", "tags" ]
+    }
+  }
+
   render() {
+    var elements = this.state.elements
+
+    var filtersDict = this.state.filterKeys.reduce(function (obj, key) {
+      var allValues = elements.map(elem => elem[key])
+      obj[key] = uniquesWithOccurrenceAsArray(allValues)
+      return obj
+    }, {})
+
+    // console.log(filtersDict)
+
     return (
       <div className="App">
         <div className="App-header">
           <h3>WWOOF LIST - CHILE</h3>
-          <Filters/>
         </div>
         <div className="App-content">
-          <ElementContainer/>
+          <FiltersContainer filtersDict={filtersDict} />
+          <ElementContainer elements={elements} />
         </div>
         <div className="App-footer">
-          <div>akabab © 2016</div>
+          <span>akabab © 2016</span>
         </div>
       </div>
     )
