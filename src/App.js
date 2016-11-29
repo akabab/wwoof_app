@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 import './App.css'
 
+import HeaderContentFooter from './Components/Generics/HeaderContentFooter'
+
 import FilterableItemsTable from './Components/Generics/FilterableItemsTable'
 import Filter from './Components/Filter'
 import Item from './Components/Item'
@@ -25,19 +27,17 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="app">
-        <div className="app-header">
-          <h3>WWOOF LIST - CHILE</h3>
-        </div>
-        <div className="app-content">
-          <FilterableItemsTable sourceItems={this.state.sourceItems} filtersKeys={this.state.filtersKeys} Filter={Filter} Item={Item} />
-        </div>
-        <div className="app-footer">
-          <span>akabab © 2016</span>
-        </div>
-      </div>
-    )
+    const header = <h3>WWOOF LIST - CHILE</h3>
+
+    const content = <FilterableItemsTable
+                      sourceItems={this.state.sourceItems}
+                      filtersKeys={this.state.filtersKeys}
+                      Filter={Filter}
+                      Item={Item} />
+
+    const footer = <span>akabab © 2016</span>
+
+    return <HeaderContentFooter header={header} content={content} footer={footer} />
   }
 
 }

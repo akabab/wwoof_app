@@ -1,0 +1,33 @@
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header, .app-footer {
+  flex: 0 0 auto;
+  background-color: #272822;
+  color: white;
+  text-align: center;
+}
+
+.app-content {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+}
+
+.app-header {
+}
+
+.app-footer {
+  padding: 10px;
+  font-size: 13px;
+}
