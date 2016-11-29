@@ -91,12 +91,12 @@ ul {
   list-style-type: none;
 }
 
-.elements-container {
+.items-results-container {
   margin-left: 150px;
   margin-right: 150px;
 }
 
-.element {
+.item {
   background-color: #DDD;
   margin: 10px;
   padding: 10px;
