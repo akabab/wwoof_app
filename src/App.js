@@ -8,7 +8,8 @@ import FilterableItemsTable from './Components/Generics/FilterableItemsTable'
 import Filter from './Components/Filter'
 import Item from './Components/Item'
 
-import wwoof_list from './wwoof_list.json'
+import wwoof_list from './data/wwoof_list.json'
+
 
 class App extends Component {
 
@@ -21,7 +22,6 @@ class App extends Component {
         "region",
         "wwoof_since",
         "tags",
-        // "quick_reply",
       ]
     }
   }

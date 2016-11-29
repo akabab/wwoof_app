@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 
-class FiltersBar extends Component {
+class FiltersContainer extends Component {
 
   constructor(props) {
     super(props)
@@ -92,7 +92,7 @@ class FiltersBar extends Component {
 
     const filters = this.state.filters.map((filter, index) => {
       return (
-        <div key={filter.key} className="filter-wrapper">
+        <div className="filter" key={filter.key}>
           <Filter key={index} keyName={filter.key} options={filter.options} handleChange={filter.handleOptionsChange} />
         </div>
       )
@@ -150,7 +150,7 @@ class FilterableItemsTable extends Component {
 
     return (
       <div className="filterable-items-table">
-        <FiltersBar sourceItems={sourceItems} filtersKeys={filtersKeys} handleChange={this.handleFiltersChange} Filter={Filter} />
+        <FiltersContainer sourceItems={sourceItems} filtersKeys={filtersKeys} handleChange={this.handleFiltersChange} Filter={Filter} />
         <ItemsResultsContainer items={this.state.filteredItems} Item={Item} />
       </div>
     )

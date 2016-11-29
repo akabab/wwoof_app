@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import ScrollLock from 'react-scroll-lock-component'
+import ScrollLock from './Generics/ScrollLock'
 
 
 // filterOption: object
@@ -46,11 +46,11 @@ class Filter extends FilterComponent {
     })
 
     return (
-      // <ScrollLock>
-        <div className="filter">
+      <ScrollLock>
+        <div className="filter-options">
           {options}
         </div>
-      // </ScrollLock>
+      </ScrollLock>
     )
   }
 
