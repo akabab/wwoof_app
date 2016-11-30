@@ -25,6 +25,7 @@ body,
 
 .filters-container {
   flex-basis: 250px;
+  min-width: 250px;
   background-color: #333;
   padding: 10px;
   height: 100%;
@@ -34,7 +35,9 @@ body,
   justify-content: center;
 }
 
-.filter-wrapper {
-  flex-basis: 250px;
-  margin: 5px;
+.items-results-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

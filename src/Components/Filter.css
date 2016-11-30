@@ -1,5 +1,6 @@
 .filter {
-  background-color: grey;
+  background-color: #484848;
+  margin: 5px;
 }
 
 .filter-header {
@@ -26,14 +27,13 @@
 
 .filter-buttons-all, .filter-buttons-none {
   padding: 3px;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   color: #d9ff21;
 }
 
 .filter-buttons-all:hover, .filter-buttons-none:hover {
   color: black;
 }
-
 
 .filter-options {
   overflow-y: scroll;
