@@ -32,8 +32,8 @@ class Filter extends FilterComponent {
     const byOccurrenceThenLexically = (a, b) => b.occurrence - a.occurrence || a.value.localeCompare(b.value)
 
     this.sortMethods = [
-      byOccurrenceThenLexically,
       lexically,
+      byOccurrenceThenLexically,
     ]
 
     this.state = {
