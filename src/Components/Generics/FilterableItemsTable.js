@@ -64,7 +64,8 @@ class FiltersContainer extends Component {
 
         const matchValue = item[filter.key]
 
-        if (selectedOptionsValues.includes(matchValue) || _.intersection(selectedOptionsValues, matchValue).length > 0) {
+        if (selectedOptionsValues.includes(matchValue)
+          || (_.isArray(matchValue) && (matchValue.length == 0 || _.intersection(selectedOptionsValues, matchValue).length > 0)) ) {
           matches += 1
         }
       })
@@ -92,7 +93,7 @@ class FiltersContainer extends Component {
 
     const filters = this.state.filters.map((filter, index) => {
       return (
-        <div className="filter" key={filter.key}>
+        <div className="filter-wrapper" key={filter.key}>
           <Filter key={index} keyName={filter.key} options={filter.options} handleChange={filter.handleOptionsChange} />
         </div>
       )

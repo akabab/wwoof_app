@@ -31,26 +31,43 @@ class FilterComponent extends Component {
 
 class Filter extends FilterComponent {
 
+  onAllButtonClicked = (event) => {
+    const updatedOptions = this.props.options.map(o => o.selected = true && o)
+    this.props.handleChange(updatedOptions)
+  }
+
+  onNoneButtonClicked = (event) => {
+    const updatedOptions = this.props.options.map(o => { o.selected = false; return o })
+    this.props.handleChange(updatedOptions)
+  }
+
   render() {
     const byOccurrenceThenLexically = (a, b) => b.occurrence - a.occurrence || a.value.localeCompare(b.value)
 
     const sortedOptions = this.props.options.sort(byOccurrenceThenLexically)
     const options = sortedOptions.map((o, index) => {
       return (
-        <div className="filter-value" key={o.value}>
-          <input className="filter-value-checkbox" type="checkbox" id={o.value} value={o.value} checked={o.selected} onChange={this.handleChange} />
-          <div className="filter-value-occurrence" htmlFor={o.value}>{o.occurrence}</div>
-          <div className="filter-value-label" htmlFor={o.value}>{o.value}</div>
+        <div className="button filter-option" key={o.value}>
+          <input className="button filter-option-checkbox" type="checkbox" id={o.value} value={o.value} checked={o.selected} onChange={this.handleChange} />
+          <label className="button filter-option-occurrence" htmlFor={o.value}>{o.occurrence}</label>
+          <label className="button filter-option-label" htmlFor={o.value}>{o.value}</label>
         </div>
       )
     })
 
     return (
-      <ScrollLock>
-        <div className="filter-options">
-          {options}
+      <div className="filter">
+        <div className="filter-header">
+          <div className="filter-title">{this.props.keyName}</div>
+          <div className="filter-buttons">
+            <div className="filter-buttons-all button" onClick={this.onAllButtonClicked}>all</div>
+            <div className="filter-buttons-none button" onClick={this.onNoneButtonClicked}>none</div>
+          </div>
         </div>
-      </ScrollLock>
+        <ScrollLock>
+          <div className="filter-options">{options}</div>
+        </ScrollLock>
+      </div>
     )
   }
 

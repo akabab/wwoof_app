@@ -14,8 +14,6 @@ body,
 
 .app-header, .app-footer {
   flex: 0 0 auto;
-  background-color: #272822;
-  color: white;
   text-align: center;
 }
 
@@ -29,5 +27,5 @@ body,
 
 .app-footer {
   padding: 10px;
-  font-size: 13px;
+  font-size: 0.7rem;
 }

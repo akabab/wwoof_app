@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Item.css'
 
 class Item extends Component {
 
@@ -7,11 +8,11 @@ class Item extends Component {
 
     return (
       <div className="item">
-        <h3>{title}</h3>
-        <h5>address: {address}</h5>
-        <h5>since: {wwoof_since}</h5>
-        <p>activity: {activity || "none provided"}</p>
-        <p>{description}</p>
+        <div className="item-title">{title}</div>
+        <div className="item-address">{address}</div>
+        <div className="item-since">since: {wwoof_since}</div>
+        <div className="item-activity">activity: {activity || "none provided"}</div>
+        <div className="item-description">{description}</div>
       </div>
     )
   }
