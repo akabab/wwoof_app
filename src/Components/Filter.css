@@ -25,13 +25,13 @@
 }
 
 
-.filter-buttons-all, .filter-buttons-none {
+.filter-buttons .button {
   padding: 3px;
   font-size: 0.65rem;
   color: #d9ff21;
 }
 
-.filter-buttons-all:hover, .filter-buttons-none:hover {
+.filter-buttons .button:hover {
   color: black;
 }
 

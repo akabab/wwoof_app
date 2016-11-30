@@ -30,7 +30,7 @@ class FiltersContainer extends Component {
         arr.push({
           "value": key,
           "occurrence": dict[key],
-          "selected": true
+          "selected": false
         })
         return arr
       }, [])
@@ -44,6 +44,7 @@ class FiltersContainer extends Component {
       const filter = {
         key: key,
         options: uniquesWithOccurrenceAsArray(allValues),
+        sortMethod: null,
         handleOptionsChange: (updatedOptions) => {
           this.options = updatedOptions
           handleChange(filter)
@@ -60,12 +61,15 @@ class FiltersContainer extends Component {
 
       let matches = 0
       filters.forEach(filter => {
-        const selectedOptionsValues = filter.options.filter(o => o.selected).map(o => o.value)
+        const filterValues = filter.options.filter(o => o.selected).map(o => o.value)
 
-        const matchValue = item[filter.key]
+        const itemValue = item[filter.key]
 
-        if (selectedOptionsValues.includes(matchValue)
-          || (_.isArray(matchValue) && (matchValue.length == 0 || _.intersection(selectedOptionsValues, matchValue).length > 0)) ) {
+        if ( ( _.isEmpty(filterValues) )
+          || ( filterValues.includes(itemValue) )
+          || ( _.isArray(itemValue) && !_.isEmpty(itemValue) && !_.isEmpty(_.intersection(filterValues, itemValue)) )
+          ) {
+
           matches += 1
         }
       })
