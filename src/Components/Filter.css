@@ -1,0 +1,94 @@
+.filter {
+  background-color: grey;
+}
+
+.filter-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  box-shadow: 0 0 10px -3px black;
+}
+
+.filter-title {
+  flex: 4;
+  margin-left: 3px;
+}
+
+.filter-buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
+.filter-buttons-all, .filter-buttons-none {
+  padding: 3px;
+  font-size: 0.8rem;
+  color: #d9ff21;
+}
+
+.filter-buttons-all:hover, .filter-buttons-none:hover {
+  color: black;
+}
+
+
+.filter-options {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 220px;
+}
+
+.filter-options .search-bar input {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+}
+
+.filter-options .search-bar input:focus {
+  outline: none;
+}
+
+.filter-option {
+  font-size: 0.7rem;
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.filter-option:hover {
+  background-color: #222;
+}
+
+.filter-option-checkbox {
+  flex: 0 0 auto;
+}
+
+.filter-option-occurrence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 11px;
+  border: orange 1px dotted;
+  color: white;
+  margin: 2px;
+  padding: 0.2rem;
+  border-radius: 25%;
+  font-size: 0.6rem;
+}
+
+.filter-option-label {
+  flex: 1 0 auto;
+  margin: 5px;
+}
+
+.button {
+  cursor: pointer;
+  user-select: none;
+}
+

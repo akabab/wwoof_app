@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import ScrollLock from './Generics/ScrollLock'
+import SearchBar from './SearchBar'
+import './Filter.css'
 
 
 // filterOption: object
 //   value: string
 //   occurrence: integer
 //   selected: boolean
-
 
 class FilterComponent extends Component {
 
@@ -28,8 +29,15 @@ class FilterComponent extends Component {
 
 }
 
-
 class Filter extends FilterComponent {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      displayedOptions: this.props.options
+    }
+  }
 
   onAllButtonClicked = (event) => {
     const updatedOptions = this.props.options.map(o => o.selected = true && o)
@@ -41,10 +49,16 @@ class Filter extends FilterComponent {
     this.props.handleChange(updatedOptions)
   }
 
-  render() {
+  handleSearch = (foundItems) => {
+    const updatedOptions = foundItems
+
+    this.setState({displayedOptions: foundItems})
+  }
+
+  render = () => {
     const byOccurrenceThenLexically = (a, b) => b.occurrence - a.occurrence || a.value.localeCompare(b.value)
 
-    const sortedOptions = this.props.options.sort(byOccurrenceThenLexically)
+    const sortedOptions = this.state.displayedOptions.sort(byOccurrenceThenLexically)
     const options = sortedOptions.map((o, index) => {
       return (
         <div className="button filter-option" key={o.value}>
@@ -65,7 +79,10 @@ class Filter extends FilterComponent {
           </div>
         </div>
         <ScrollLock>
-          <div className="filter-options">{options}</div>
+          <div className="filter-options">
+            <SearchBar sourceItems={this.props.options} filterKeys={["value"]} onSearch={this.handleSearch} />
+            {options}
+          </div>
         </ScrollLock>
       </div>
     )
