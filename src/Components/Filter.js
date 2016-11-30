@@ -4,12 +4,6 @@ import ScrollLock from './Generics/ScrollLock'
 import SearchBar from './SearchBar'
 import './Filter.css'
 
-
-// filterOption: object
-//   value: string
-//   occurrence: integer
-//   selected: boolean
-
 class FilterComponent extends Component {
 
   constructor(props) {
@@ -51,7 +45,6 @@ class Filter extends FilterComponent {
 
   onSortButtonClicked = (event) => {
     const sortMethodIndex = (this.state.sortMethodIndex + 1) % this.sortMethods.length
-    console.log(sortMethodIndex)
     this.setState({ sortMethodIndex: sortMethodIndex })
   }
 
@@ -76,10 +69,10 @@ class Filter extends FilterComponent {
     const sortedOptions = this.state.displayedOptions.sort(this.sortMethods[this.state.sortMethodIndex])
     const options = sortedOptions.map((o, index) => {
       return (
-        <div className="button filter-option" key={o.value}>
-          <input className="button filter-option-checkbox" type="checkbox" id={o.value} value={o.value} checked={o.selected} onChange={this.handleChange} />
-          <label className="button filter-option-occurrence" htmlFor={o.value}>{o.occurrence}</label>
-          <label className="button filter-option-label" htmlFor={o.value}>{o.value}</label>
+        <div className="filter-option button" key={o.value}>
+          <input className="filter-option-checkbox button" type="checkbox" id={o.value} value={o.value} checked={o.selected} onChange={this.handleChange} />
+          <label className="filter-option-occurrence button" htmlFor={o.value}>{o.occurrence}</label>
+          <label className="filter-option-label button" htmlFor={o.value}>{o.value}</label>
         </div>
       )
     })

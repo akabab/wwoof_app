@@ -22,6 +22,7 @@ class App extends Component {
         "region",
         "wwoof_since",
         "tags",
+        "activity"
       ]
     }
   }
