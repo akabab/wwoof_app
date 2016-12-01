@@ -61,11 +61,10 @@ class Filter extends FilterComponent {
   handleSearch = (foundItems) => {
     const updatedOptions = foundItems
 
-    this.setState({displayedOptions: foundItems})
+    this.setState({displayedOptions: updatedOptions})
   }
 
   render = () => {
-    console.log("render")
     const sortedOptions = this.state.displayedOptions.sort(this.sortMethods[this.state.sortMethodIndex])
     const options = sortedOptions.map((o, index) => {
       return (

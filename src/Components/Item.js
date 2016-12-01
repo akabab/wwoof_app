@@ -4,7 +4,7 @@ import './Item.css'
 class Item extends Component {
 
   render() {
-    const { title, address, activity, description, wwoof_since } = this.props.item
+    const { title, address, activity, description } = this.props.item
 
     return (
       <div className="item">
