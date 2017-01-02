@@ -39,3 +39,16 @@ ul {
   color: grey;
   margin-top: 5px;
 }
+
+.item-contacts {
+  margin-top: 10px;
+}
+
+.item-contacts a {
+  margin: 3px;
+  color: #d9ff21;
+}
+
+.item-contacts a:hover {
+  color: black;
+}
