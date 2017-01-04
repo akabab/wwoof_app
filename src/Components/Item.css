@@ -3,6 +3,7 @@ ul {
 }
 
 .item {
+  position: relative;
   flex-basis: 150px;
   /*overflow: hidden;*/
   /*min-width: 50px;*/
@@ -13,13 +14,21 @@ ul {
   font-size: 0.8rem;
 }
 
+.favorite-wrapper {
+  position: absolute;
+  background-color: #484848;
+  padding: 3px;
+  top: 9px;
+  left: -37px;
+  box-shadow: 3px 0px 5px -2px rgba(0, 0, 0, 0.51);
+}
+
 .item-title {
   font-size: 1.0rem;
 }
 
 .item-address {
   color: grey;
-
 }
 
 .item-activity {
@@ -51,4 +60,12 @@ ul {
 
 .item-contacts a:hover {
   color: black;
+}
+
+.item-favorite {
+  color: green;
+}
+
+.item-not-favorite {
+  color: red;
 }

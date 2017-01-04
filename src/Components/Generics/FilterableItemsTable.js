@@ -119,8 +119,8 @@ class ItemsResultsContainer extends Component {
   render() {
     const Item = this.props.Item
 
-    const items = this.props.items.map((item, index) => {
-      return <Item key={index} item={item} />
+    const items = this.props.items.map(item => {
+      return <Item key={item.id} item={item} />
     })
 
     return (
