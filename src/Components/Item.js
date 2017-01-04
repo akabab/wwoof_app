@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Item.css'
-import Fav from './Fav.js'
+import Favorite from './Favorite.js'
 import _ from 'lodash'
 
 const absoluteUrl = (url) => (!/^(?:f|ht)tps?:\/\//.test(url)) ? "http://" + url : url
@@ -27,9 +27,9 @@ class Item extends Component {
 
     return (
       <div className="item">
+        <Favorite id={id} />
         <div className="item-title">{title}</div>
         <div className="item-address">{address}</div>
-        <Fav id={id} />
         <div className="item-activity">
           <div className="item-activity-label">activities:</div>
           <div className="item-activity-value">{activity || "none provided"}</div>
