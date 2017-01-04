@@ -52,3 +52,11 @@ ul {
 .item-contacts a:hover {
   color: black;
 }
+
+.item-favorite {
+  color: green;
+}
+
+.item-not-favorite {
+  color: red;
+}
