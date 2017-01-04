@@ -22,7 +22,7 @@ class Item extends Component {
 
     const mailLinks = (mails || []).map(m => <a key={m} href={"mailto:"+m}>{m}</a>)
     const phoneLinks = _.concat(mobiles || [], phones || []).map(p => <a key={p} href={"tel:"+p}>{p}</a>)
-    const websitesLinks = (websites || []).map(w => <a key={absoluteUrl(w)} href={w}>{prettyUrl(w)}</a>)
+    const websitesLinks = (websites || []).map(w => <a key={w} href={absoluteUrl(w)}>{prettyUrl(w)}</a>)
 
     return (
       <div className="item">
